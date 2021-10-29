@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+    <form>
+        <div class="form-group">
+            <label for="pname">Name</label>
+            <input type="text" class="form-control" id="pname"
+                placeholder="Enter name">
+        </div>
+        <div class="form-group">
+            <label for="pstmt">Statement</label>
+            <input type="text" class="form-control" id="pstmt" placeholder="">
+        </div>
+        <button type="submit" class="btn btn-primary" onclick="userAction()">Submit</button>
+    </form>
+
+
+        <script>
+
+        const userAction = async () => {
+                var problem_name = document.getElementById("pname").value;
+                var stmt = document.getElementById("pstmt").value;
+                const response = await fetch('http://localhost:3000/add', {
+                    method: 'POST',
+                    body: JSON.stringify({ problem_name: problem_name,stmt: stmt}),
+                    headers: {
+                        'Content-Type':  'application/json'
+                    }
+                })
+                
+            }
+
+        </script>
+    </body>
+</html>
